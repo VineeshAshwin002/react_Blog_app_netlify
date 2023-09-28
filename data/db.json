@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "My First Post",
+      "datetime": "July 01, 2021 11:17:36 AM",
+      "body": "Made a video about Tesla Car"
+    },
+    {
+      "id": 2,
+      "title": "My Second Post",
+      "datetime": "July 01, 2021 11:17:36 AM",
+      "body": "Information About Duke 390"
+    },
+    {
+      "id": 3,
+      "title": "My Third Post",
+      "datetime": "July 01, 2021 11:17:36 AM",
+      "body": "Himalayan 450 Launch Date"
+    },
+    {
+      "id": 4,
+      "title": "Jailer",
+      "datetime": "September 28, 2023 12:05:39 PM",
+      "body": "Jailer is an Superstar Film.It is directed by Nelson and it's MD is Anirudh"
+    }
+  ]
+}

@@ -1,21 +1,21 @@
-import About from "./About";
-import Footer from "./Footer";
-import Header from "./Header";
-import   Home   from "./Home";
-import Missing from "./Missing";
-import Nav from "./Nav";
-import NewPost from "./NewPost";
-import PostPage from "./PostPage";
+import { useEffect,useState,createContext } from "react";
+import Post from "../Post";
+//import {Routes,Route, Link, useNavigate} from "react-router-dom";
+import PostLayout from "../PostLayout";
+//import { useState } from "react";
+//import Feed from "../Feed";
+import {format} from "date-fns"
+//import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../api/posts";
+import EditPost from "../EditPost";
+import useWindowSize from "../hooks/useWindowSize";
+import useAxiosFetch from "../hooks/useAxiosFetch";
 
-import {Routes,Route} from "react-router-dom";
+const DataContext = createContext({})
 
-import EditPost from "./EditPost";
-
-import { DataProvider } from "./Context/DataContext";
-
-
-function App() {
-{/*
+export const DataProvider = ({children})=>
+{
   const[posts,setPosts]=useState([])
   const [search,setSearch]=useState('')
   const [searchResults,setSearchResults]=useState([])
@@ -65,7 +65,7 @@ function App() {
   },[]);
 
 */}
- {/* 
+  
  useEffect(()=>
  {
   const filterResults = posts.filter((post)=>
@@ -150,123 +150,30 @@ const handleEdit = async(id) =>
     }
      
   }
-  /*}
-*/}
-  return (
-    <div className="App">
- {/* In this way, we are using the Links
-    <nav>
-        <ul>
-          <li><Link to = "/">Home</Link></li>
-          <li><Link to = "/about">About</Link></li>
-
-          <li><Link to = "/postpage">Post page</Link></li>
-         
-
-         
-
-        </ul>
-
-    </nav>
-  */}
-    {/* In this way, we are using the route
-      <Routes>
-        <Route
-            path="/"  element={<Home />}
-         />
-         <Route 
-            path="/about" element={<About />}
-          />
-          
-          <Route
-            path="/newpost" element ={<NewPost/>}
-          />
-          
-            <Route path="/postpage" element={<PostLayout/>} >
-                <Route 
-                    index element = {<PostPage/>}
-                  />
-                  <Route 
-                    path=":id" element ={<Post/>}
-                  />
-                  <Route
-                    path="newpost" element ={<NewPost/>}
-                  />
-              
-            </Route>
-          <Route
-            path="*" element={<Missing/>}
-            />
-
-       
-      </Routes>
-  */}
-  {/*
- <Routes>
-      <Route path="/" element={<Home />}
-      />
-
-      <Route path="/post" element={<About/>}
-      />
-
-      <Route path="/about" element={<About/>}
-      />
-    
-
-  </Routes>
-*/}
-
-  <DataProvider>
-   <Header
-        title="Blog-Site"
-        //width={width}
-      />
-    <Nav/>
-      <Routes>
-            //Home
-            <Route path="/" element={
-              <Home />}
-            />
-            //NewPost
-
-//Here We are using the Nested Route 
-      <Route path="post">
-          <Route index element={
-              <NewPost
-              />} 
-          />
-            <Route path=":id" element = {
-                <PostPage
-                />}
-            />
-      </Route>
-           {/* 
-            //Postpage
-            <Route path="/postpage" element={
-                <PostPage/>}
-            /> 
-            */}
-            //EditPost
-            <Route path='/edit/:id' 
-                element={
-                <EditPost
-                />
-            }/>
-
-            //About
-            <Route path="/about" element={
-                <About/>}
-            />  
-
-            //Missing
-            <Route path="*" element={
-                <Missing/>}
-            />
-      </Routes>
-   <Footer/>
- </DataProvider>    
-    </div>
-  );
+    return(
+        <DataContext.Provider value={{
+            width,
+            search,
+            setSearch,
+            searchResults,
+            fetchError,
+            isLoading,
+            postTitle,
+            setPostTitle,
+            postBody,
+            setPostBody,
+            handleSubmit,
+            posts,
+            editTitle,
+            setEditTitle,
+            handleEdit,
+            editBody,
+            setEditBody,
+            handleDelete,
+        }}>
+            {children}
+        </DataContext.Provider>
+    )
 }
 
-export default App;
+export default DataContext
