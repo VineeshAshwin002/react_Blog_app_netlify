@@ -1,14 +1,10 @@
 import { useEffect,useState,createContext } from "react";
-import Post from "../Post";
-//import {Routes,Route, Link, useNavigate} from "react-router-dom";
-import PostLayout from "../PostLayout";
-//import { useState } from "react";
-//import Feed from "../Feed";
+
 import {format} from "date-fns"
-//import { useEffect } from "react";
+
 import { useNavigate } from "react-router-dom";
 import api from "../api/posts";
-import EditPost from "../EditPost";
+
 import useWindowSize from "../hooks/useWindowSize";
 import useAxiosFetch from "../hooks/useAxiosFetch";
 
@@ -27,45 +23,14 @@ export const DataProvider = ({children})=>
   const {width}=useWindowSize()
   const {data,fetchError,isLoading}=useAxiosFetch("http://localhost:3500/posts")
 
-  //useEffect is used to display the fetch data
 
   useEffect(()=>{
     setPosts(data)
   },[data])
 
 
-  //Fetch Data from Axios
-  //I had comment this for reference
-  //Instead of this im using the custom hooks called
-  //useAxiousFetch
-{/*
-  useEffect (()=>{
-    const fetchPosts = async()=>
-    {
-      try{
-          const response =await api.get('/posts');
-          setPosts(response.data);
-      }
-      catch(err){
-
-        if(err.response)
-        {
-          console.log(err.response.data)
-          console.log(err.response.status)
-          console.log(err.response.headers)
-        }
-        else
-        {
-          console.log(`Error : ${err.message}`)
-        }
-      }
-    }
-
-    fetchPosts();
-  },[]);
-
-*/}
   
+
  useEffect(()=>
  {
   const filterResults = posts.filter((post)=>
@@ -101,7 +66,7 @@ export const DataProvider = ({children})=>
       }
     }
   }
-//patch or Edit
+
 
 const handleEdit = async(id) =>
 {
@@ -130,7 +95,6 @@ const handleEdit = async(id) =>
     }
 }
 
-//Delete
   const handleDelete = async(id)=>
   {
     try{

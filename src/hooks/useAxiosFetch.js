@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useState,useEffect } from 'react'
 import axios from 'axios'
 
@@ -11,7 +11,7 @@ const useAxiosFetch = (dataUrl) => {
 
     useEffect(()=>{
 
-        //isMounted is used to check the Component is Loaded or Not
+       
         let isMounted = true
         const source = axios.CancelToken.source()
 

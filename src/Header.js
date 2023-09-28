@@ -1,4 +1,4 @@
-//̥import React from 'react'
+
 import React, { useContext } from 'react'
 import {FaLaptop ,FaTabletAlt ,FaMobileAlt} from 'react-icons/fa'
 import DataContext from './Context/DataContext'

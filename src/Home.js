@@ -1,4 +1,4 @@
-//̥import React from 'react'
+
 import React, { useContext } from 'react'
 import Feed from './Feed'
 import DataContext from './Context/DataContext'
@@ -14,22 +14,7 @@ const Home = () => {
         <Feed posts={searchResults}/>
         :<p className='statusMsg'>No posts to display</p>
         )}
-      {/*
-      posts.length 
-         ?
-      (
-        <
-          Feed posts={posts}
-        />
-      )
-      :
-      (
-        <p style={{marginTop:"2rem"}}>
-          No posts to display
-        </p>
-
-      )
-      */  }
+     
         
     
    </main>
